@@ -1,5 +1,14 @@
 #include "Harl.hpp"
 
+Harl::Harl()
+{
+    levels[0] = "DEBUG";
+    levels[1] = "INFO";
+    levels[2] = "WARNING";
+    levels[3] = "ERROR";
+    TestFlag = true;
+    NumberOfLevels = 4;
+}
 void Harl::debug (void)
 {
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
@@ -20,9 +29,6 @@ void Harl::error (void)
 }
 void Harl::complain(std::string level)
 {
-    size_t NumberOfLevels = 4;
-    std::string pointer_names[4] = {"debug", "info", "warning", "error"};
-    std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     size_t Index = 0;
     void (Harl::*pointer_array[4])(void);
 
@@ -30,7 +36,27 @@ void Harl::complain(std::string level)
     pointer_array[1] = &Harl::info;
     pointer_array[2] = &Harl::warning;
     pointer_array[3] = &Harl::error;
-    while (level != levels[Index])
+    while (level != levels[Index] && Index != NumberOfLevels)
         Index++;
-    (this->*pointer_array[Index])();
+    if (Index != NumberOfLevels)
+        (this->*pointer_array[Index])();
+    else
+        std::cout << "Harl does not accept this level. Please introduce a correct level" << std::endl;
+}
+
+int Harl::test()
+{
+    size_t Index = 0;
+
+    while (Index < NumberOfLevels)
+    {
+        complain(levels[Index]);
+        if (!TestFlag)
+            return (2);
+        Index++;
+    }
+    complain("INVALID LEVEL");
+    if (!TestFlag)
+        return (2);
+    return (0);
 }

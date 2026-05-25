@@ -4,5 +4,7 @@ int main(void)
 {
     Harl harl;
 
-    harl.complain("WARNING");
+    if (harl.test() != 0)
+        return (2);
+    return (0);
 }

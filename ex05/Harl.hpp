@@ -10,8 +10,13 @@ class Harl
         void info  (void);
         void warning (void);
         void error (void);
+        std::string levels[4];
+        size_t NumberOfLevels;
+        bool    TestFlag;
     public:
+        Harl();
         void complain(std::string level);
+        int test();
 };
 
 #endif
