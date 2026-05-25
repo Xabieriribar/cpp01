@@ -4,8 +4,9 @@ int main(void)
 {
     Harl harl;
     size_t Index = 0;
-    size_t NumberOfLevels;
-    bool    Flag;
+    size_t NumberOfLevels = 4;
+    bool    Flag = true;
+    std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
     while (Index < NumberOfLevels)
     {
@@ -14,7 +15,6 @@ int main(void)
             return (2);
         Index++;
     }
-
     harl.complain("INVALID LEVEL");
     if (!harl.getFlag(Flag))
         return (2);

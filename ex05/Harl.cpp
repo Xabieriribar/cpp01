@@ -13,9 +13,9 @@ Harl::Harl()
 bool Harl::getFlag(bool &Flag)
 {
     if (TestFlag)
-        Flag = true;
+        return (true);
     else
-        Flag = false;
+        return (false);
 }
 
 void Harl::debug (void)
