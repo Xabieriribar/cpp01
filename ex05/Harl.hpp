@@ -16,7 +16,7 @@ class Harl
     public:
         Harl();
         void complain(std::string level);
-        int test();
+        bool getFlag(bool &Flag);
 };
 
 #endif

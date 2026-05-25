@@ -9,6 +9,15 @@ Harl::Harl()
     TestFlag = true;
     NumberOfLevels = 4;
 }
+
+bool Harl::getFlag(bool &Flag)
+{
+    if (TestFlag)
+        Flag = true;
+    else
+        Flag = false;
+}
+
 void Harl::debug (void)
 {
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
@@ -42,21 +51,4 @@ void Harl::complain(std::string level)
         (this->*pointer_array[Index])();
     else
         std::cout << "Harl does not accept this level. Please introduce a correct level" << std::endl;
-}
-
-int Harl::test()
-{
-    size_t Index = 0;
-
-    while (Index < NumberOfLevels)
-    {
-        complain(levels[Index]);
-        if (!TestFlag)
-            return (2);
-        Index++;
-    }
-    complain("INVALID LEVEL");
-    if (!TestFlag)
-        return (2);
-    return (0);
 }
